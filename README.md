@@ -18,4 +18,5 @@ link js file
 we made the input element focus on / key press
 we have to import data.json inside main.js
 `import data from 'data.json';`
-add <script>
+add <script type="module">
+    
