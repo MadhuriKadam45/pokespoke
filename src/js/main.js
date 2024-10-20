@@ -7,6 +7,8 @@ const inputEl = document.querySelector("input");
 const cardsRowEl = document.querySelector("#cards-row");
 
 function renderPokemon(list) {
+  cardsRowEl.innerHTML = "";
+
   for (let pokeObj of list) {
     const pokemon = PokemonCard(
       pokeObj.image,
@@ -17,17 +19,25 @@ function renderPokemon(list) {
     cardsRowEl.appendChild(pokemon);
   }
 }
-renderPokemon(shuffle(data));
+
+function renderFilteredPokemon(term) {
+  const filtered = [];
+  for (let obj of data) {
+    if (obj.name.toLowerCase().includes(term)) filtered.push(obj);
+  }
+
+  renderPokemon(filtered);
+}
 
 //  input element on change
 inputEl.addEventListener("input", (event) => {
-  const currvalue = event.target.value;
+  const currValue = event.target.value.toLowerCase().trim();
+  renderFilteredPokemon(currValue);
 
-  const filtered = [];
-  for (let obj of data) {
-    if (obj.name.includes(currvalue)) filtered.push(obj);
-  }
-  console.log(filtered);
+  // const filtered = [];
+  // for (let obj of data) {
+  //   if (obj.name.toLowerCase().includes(currvalue)) filtered.push(obj);
+  // }
 });
 
 // Focus input on slash keypress
@@ -36,6 +46,8 @@ document.addEventListener("keyup", function (event) {
     inputEl.focus();
   }
 });
+
+renderPokemon(shuffle(data));
 
 // import data from "./data.json";
 // import { PokemonCard } from "./components/PokemonCard";
