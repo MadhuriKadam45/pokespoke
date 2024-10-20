@@ -1,3 +1,4 @@
+import { shuffle } from "fast-shuffle";
 import data from "./data.json";
 import { PokemonCard } from "./components/PokemonCard";
 
@@ -16,8 +17,18 @@ function renderPokemon(list) {
     cardsRowEl.appendChild(pokemon);
   }
 }
+renderPokemon(shuffle(data));
 
-renderPokemon(data);
+//  input element on change
+inputEl.addEventListener("input", (event) => {
+  const currvalue = event.target.value;
+
+  const filtered = [];
+  for (let obj of data) {
+    if (obj.name.includes(currvalue)) filtered.push(obj);
+  }
+  console.log(filtered);
+});
 
 // Focus input on slash keypress
 document.addEventListener("keyup", function (event) {
