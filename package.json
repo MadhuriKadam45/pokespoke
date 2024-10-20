@@ -39,6 +39,7 @@
     "escape-string-regexp": "^1.0.5",
     "fast-shuffle": "^6.1.0",
     "fill-range": "^7.1.1",
+    "fuse.js": "^7.0.0",
     "get-port": "^4.2.0",
     "globals": "^13.24.0",
     "has-flag": "^4.0.0",
