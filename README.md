@@ -20,3 +20,7 @@ we have to import data.json inside main.js
 `import data from 'data.json';`
 add <script type="module">
     
+Random Shuffle
+Fuzzy Search
+Rendering data from `data.json`
+Built UI using bootstrap
